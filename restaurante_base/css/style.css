@@ -1,28 +1,405 @@
-:root {
-  /* ─── Paleta de colores ─────────────────────────
-     TODO: Podés cambiar estos valores para personalizar
-     el tema de tu restaurante
-  ─────────────────────────────────────────────── */
-  --color-primario:    #2C3E50;
-  --color-secundario:  #E67E22;
-  --color-fondo:       #FAF8F5;
-  --color-texto:       #333333;
-  --color-claro:       #FFFFFF;
-  --color-reserva-vip: #FFF3CD; /* fondo para grupos de 6+ personas */
 
-  --fuente-titulo: 'Playfair Display', serif;
-  --fuente-cuerpo: 'Lato', sans-serif;
+ /* CAFETERIA SAN MARTIN - Paleta de colores */
+
+:root {
+    --vino: #1f4d3d;
+    --vino-oscuro: #122e24;
+    --crema: #f6efdd;
+    --carbon: #2b2420;
+    --dorado: #c9a227;
+    --oliva: #8a5a32;
+    --error: #b23a2e;
+    --borde: #e1d4ad;
+
+    --fuente-titulo: 'Playfair Display', Georgia, serif;
+    --fuente-texto: 'Lato', Arial, sans-serif;
 }
 
 /* ─── RESET Y BASE ─── */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+body {
+    font-family: var(--fuente-texto);
+    color: var(--carbon);
+    background-color: var(--crema);
+    line-height: 1.5;
+}
+ 
+img {
+    max-width: 100%;
+}
+ 
+/*Encabezado*/
+
+.encabezado {
+    background: linear-gradient(160deg, var(--vino) 0%, var(--vino-oscuro) 100%);
+    color: var(--crema);
+    padding: 56px 0 44px;
+    border-bottom: 6px solid var(--dorado);
+    text-align: center;
 }
 
-body {
-  font-family: var(--fuente-cuerpo);
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
+.encabezado h1 {
+    font-family: var(--fuente-titulo);
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0 0 8px;
+}
+
+.subtitulo {
+    font-size: 17px;
+    color: #e7d9c8;
+    margin: 0;
+}
+
+/* Secciones generales */
+
+main {
+    padding: 48px 24px;
+}
+
+.seccion-menu h2,
+.seccion-reservas h2 {
+    font-family: var(--fuente-titulo);
+    font-size: 30px;
+    color: var(--vino-oscuro);
+    margin-bottom: 24px;
+}
+
+.divisor {
+    border: none;
+    border-top: 2px solid var(--borde);
+    margin: 48px 0;
+}
+
+/* Filtros de categoria*/
+
+.filtros {
+    margin-bottom: 28px;
+}
+
+.btn-filtro {
+    width: 100%;
+    font-family: var(--fuente-texto);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 16px;
+    border: 2px solid var(--vino);
+    border-radius: 999px;
+    background-color: transparent;
+    color: var(--vino);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-filtro:hover {
+    background-color: var(--vino);
+    color: var(--crema);
+}
+
+/* Boton de categoria activa debe verse visualmente diferente */
+.btn-filtro.activo {
+    background-color: var(--dorado);
+    border-color: var(--dorado);
+    color: var(--carbon);
+    transform: translateY(-2px);
+}
+
+/* Cards de platillo */
+
+.contenedor-menu {
+    margin: 0 -8px;
+}
+
+.card-plato {
+    background-color: #fffdf9;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 22px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 2px 10px rgba(43, 36, 32, 0.06);
+    border-top: 4px solid var(--vino);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 16px;
+}
+
+.card-plato:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 22px rgba(43, 36, 32, 0.12);
+}
+
+.card-plato .categoria {
+    align-self: flex-start;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--oliva);
+    background-color: #f0e6d2;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.card-plato .nombre {
+    font-family: var(--fuente-titulo);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--vino-oscuro);
+    margin: 4px 0 0;
+}
+
+.card-plato .descripcion {
+    font-size: 14px;
+    color: #5a5048;
+    flex-grow: 1;
+    margin: 0;
+}
+
+.card-plato .precio {
+    font-family: var(--fuente-titulo);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--dorado);
+    margin-top: 6px;
+}
+
+/* Formulario de reservas */
+
+.seccion-reservas form {
+    background-color: #fffdf9;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 28px;
+    box-shadow: 0 2px 10px rgba(43, 36, 32, 0.06);
+}
+
+.campo-label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--carbon);
+    margin-bottom: 6px;
+}
+
+.campo-input,
+.campo-select {
+    display: block;
+    width: 100%;
+    font-family: var(--fuente-texto);
+    font-size: 14px;
+    padding: 8px 12px;
+    border: 1.5px solid var(--borde);
+    border-radius: 6px;
+    background-color: #fffefb;
+    color: var(--carbon);
+}
+
+.campo-input:focus,
+.campo-select:focus {
+    outline: none;
+    border-color: var(--vino);
+    box-shadow: none;
+}
+
+/* Input marcado como invalido */
+.campo-input.invalido,
+.campo-select.invalido {
+    border-color: var(--error);
+    background-color: #fbeceb;
+}
+
+/* Mensaje de error debajo de cada input */
+.error-campo {
+    min-height: 16px;
+    font-size: 12.5px;
+    color: var(--error);
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+.btn-reservar {
+    width: 100%;
+    font-family: var(--fuente-texto);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 0;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--vino);
+    color: var(--crema);
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-reservar:hover:enabled {
+    background-color: var(--vino-oscuro);
+}
+
+/* Boton deshabilitado hasta que el formulario sea valido */
+.btn-reservar:disabled {
+    background-color: #b8a99a;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.mensaje-confirmacion {
+    min-height: 18px;
+    margin-top: 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--oliva);
+    text-align: center;
+}
+
+/* Tabla de reservas */
+
+.tabla-reservas-wrapper {
+    margin-top: 40px;
+    overflow-x: auto;
+}
+
+.tabla-reservas-wrapper h3 {
+    font-family: var(--fuente-titulo);
+    color: var(--vino-oscuro);
+    margin-bottom: 16px;
+}
+
+.tabla-reservas {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 520px;
+    background-color: #fffdf9;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tabla-reservas thead {
+    background-color: var(--vino);
+    color: var(--crema);
+}
+
+.tabla-reservas th {
+    text-align: left;
+    padding: 12px 14px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.tabla-reservas td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--borde);
+}
+
+/* Fila de reserva generada dinamicamente */
+.fila-reserva {
+    background-color: #fffdf9;
+}
+
+.fila-reserva:hover {
+    background-color: #f6efe2;
+}
+
+/* Reservas con 6 o mas personas com resaltado visual */
+.fila-reserva.grupo-grande {
+    background-color: #f3e0c4;
+    font-weight: 600;
+}
+
+.fila-reserva.grupo-grande:hover {
+    background-color: #ecd3a8;
+}
+
+/* Resumen dinamico */
+
+.resumen-reservas {
+    margin-top: 24px;
+    background-color: var(--carbon);
+    color: var(--crema);
+    border-radius: 10px;
+    padding: 24px;
+}
+
+.resumen-reservas h4 {
+    font-family: var(--fuente-titulo);
+    font-size: 18px;
+    margin: 0 0 16px;
+    color: var(--dorado);
+}
+
+.resumen-reservas .resumen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+}
+
+.resumen-reservas .resumen-dato {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.resumen-reservas .resumen-dato .valor {
+    font-family: var(--fuente-titulo);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--crema);
+    display: block;
+}
+
+.resumen-reservas .resumen-dato .etiqueta {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #c9bdae;
+}
+
+/* Pie de pagina */
+
+.pie-pagina {
+    background-color: var(--vino-oscuro);
+    color: #e7d9c8;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .encabezado {
+        padding: 40px 0 32px;
+    }
+
+    .encabezado h1 {
+        font-size: 32px;
+    }
+
+    main {
+        padding: 32px 16px;
+    }
+
+    .seccion-menu h2,
+    .seccion-reservas h2 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .encabezado h1 {
+        font-size: 26px;
+    }
+
+    .btn-filtro {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
 }

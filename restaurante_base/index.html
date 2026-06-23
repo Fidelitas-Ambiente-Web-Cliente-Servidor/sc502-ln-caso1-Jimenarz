@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Restaurante Ficticio</title>
+  <title>Cafetería San Martín</title>
 
   <!-- Bootstrap CSS -->
   <link
@@ -22,7 +22,132 @@
 </head>
 <body>
 
-  <script src="js/app.js"></script>
+  <!-- ENCABEZADO -->
+  <header class="encabezado">
+    <div class="container">
+      <h1>Cafetería San Martín</h1>
+      <p class="subtitulo">Donde cada plato cuenta una historia</p>
+    </div>
+  </header>
 
+  <main class="container">
+
+    <!-- SECCION 1: MENU -->
+    <section id="menu" class="seccion-menu">
+      <h2>Nuestro Menu</h2>
+
+      <!-- Botones de filtro por categoria -->
+      <div class="filtros row">
+        <div class="col-6 col-md-3">
+          <button class="btn-filtro" data-categoria="Todos">Todos</button>
+        </div>
+        <div class="col-6 col-md-3">
+          <button class="btn-filtro" data-categoria="Entrada">Entradas</button>
+        </div>
+        <div class="col-6 col-md-3">
+          <button class="btn-filtro" data-categoria="Plato Fuerte">Platos Fuertes</button>
+        </div>
+        <div class="col-6 col-md-3">
+          <button class="btn-filtro" data-categoria="Postre">Postres</button>
+        </div>
+      </div>
+
+      <!-- Contenedor donde JS inyecta las cards del menu -->
+      <div id="contenedor-menu" class="row contenedor-menu"></div>
+    </section>
+
+    <hr class="divisor" />
+
+    <!-- SECCION 2: RESERVAS -->
+    <section id="reservas" class="seccion-reservas">
+      <h2>Reserva tu Mesa</h2>
+
+      <form id="form-reserva" class="row" novalidate>
+        <div class="col-md-6">
+          <label for="nombre" class="campo-label">Nombre completo</label>
+          <input type="text" class="campo-input" id="nombre" name="nombre" />
+          <div class="error-campo" id="error-nombre"></div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="correo" class="campo-label">Correo electronico</label>
+          <input type="email" class="campo-input" id="correo" name="correo" />
+          <div class="error-campo" id="error-correo"></div>
+        </div>
+
+        <div class="col-md-4">
+          <label for="fecha" class="campo-label">Fecha de reserva</label>
+          <input type="date" class="campo-input" id="fecha" name="fecha" />
+          <div class="error-campo" id="error-fecha"></div>
+        </div>
+
+        <div class="col-md-4">
+          <label for="hora" class="campo-label">Hora</label>
+          <select class="campo-select" id="hora" name="hora">
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="18:00">18:00</option>
+            <option value="19:00">19:00</option>
+            <option value="20:00">20:00</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label for="personas" class="campo-label">Numero de personas</label>
+          <input type="number" class="campo-input" id="personas" name="personas" min="1" max="20" />
+          <div class="error-campo" id="error-personas"></div>
+        </div>
+
+        <div class="col-12">
+          <label for="comentarios" class="campo-label">Comentarios (opcional)</label>
+          <textarea class="campo-input" id="comentarios" name="comentarios" rows="3"></textarea>
+        </div>
+
+        <div class="col-12">
+          <button type="submit" id="btn-reservar" class="btn-reservar" disabled>
+            Confirmar Reserva
+          </button>
+        </div>
+
+        <!-- Mensaje de confirmacion al agregar reserva -->
+        <div class="col-12">
+          <div id="mensaje-confirmacion" class="mensaje-confirmacion"></div>
+        </div>
+      </form>
+
+      <!-- TABLA DE RESERVAS -->
+      <div class="tabla-reservas-wrapper">
+        <h3>Reservas Registradas</h3>
+        <table class="tabla-reservas">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Personas</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpo-tabla-reservas">
+            <!-- Las filas se generan dinamicamente -->
+          </tbody>
+        </table>
+      </div>
+
+      <!--  RESUMEN DINAMICO -->
+      <div id="resumen-reservas" class="resumen-reservas">
+        <!-- Contenido generado dinamicamente -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pie-pagina">
+    <div class="container">
+      <p>&copy; 2026 Cafetería San Martín. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
